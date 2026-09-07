@@ -13,6 +13,7 @@ Todo el código está pensado para ejecutarse **en Databricks**, sobre un clúst
 | Fichero | Tarea | Patrón de ejecución |
 |---|---|---|
 | `Clasificacion_textos.ipynb` | Clasificación (20 Newsgroups y corpus PROGRESO) | Notebook parametrizado, lanzado como *Job* |
+| `Parametros_clasificacion.ipynb` | Parámetros de la comparación de clasificación | Se usa como entrada de configuración para el *Job* de clasificación |
 | `WikiText_Final.ipynb` | Modelado de lenguaje (WikiText-103) | Notebook todo-en-uno, ejecución interactiva |
 | `LRA_ListOps_Final.ipynb` | Clasificación de secuencias (LRA ListOps) | Notebook todo-en-uno, ejecución interactiva |
 | `datos_progreso.csv` | Resultados exportados desde MLflow | Entrada del análisis y de las figuras del TFM |
