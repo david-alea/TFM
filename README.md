@@ -12,10 +12,10 @@ Todo el código está pensado para ejecutarse **en Databricks**, sobre un clúst
 
 | Fichero | Tarea | Patrón de ejecución |
 |---|---|---|
-| `Worker_Notebook_Full.ipynb` | Clasificación (20 Newsgroups y corpus PROGRESO) | Notebook parametrizado, lanzado como *Job* |
-| `NextToken_WikiText_Mamba_Working.ipynb` | Modelado de lenguaje (WikiText-103) | Notebook todo-en-uno, ejecución interactiva |
-| `LRA_ListOps_V2_1.ipynb` | Clasificación de secuencias (LRA ListOps) | Notebook todo-en-uno, ejecución interactiva |
-| `*.csv` | Resultados exportados desde MLflow | Entrada del análisis y de las figuras del TFM |
+| `Clasificacion_textos.ipynb` | Clasificación (20 Newsgroups y corpus PROGRESO) | Notebook parametrizado, lanzado como *Job* |
+| `WikiText_Final.ipynb` | Modelado de lenguaje (WikiText-103) | Notebook todo-en-uno, ejecución interactiva |
+| `LRA_ListOps_Final.ipynb` | Clasificación de secuencias (LRA ListOps) | Notebook todo-en-uno, ejecución interactiva |
+| `datos_progreso.csv` | Resultados exportados desde MLflow | Entrada del análisis y de las figuras del TFM |
 
 ---
 
@@ -63,7 +63,7 @@ Un barrido completo consiste, por tanto, en ejecutar el notebook una vez por cad
 
 ### 2. Notebook parametrizado (clasificación)
 
-`Worker_Notebook_Full.ipynb` sigue el patrón opuesto: **una ejecución = una arquitectura con una configuración concreta**. Los parámetros se declaran como *widgets* de Databricks al principio del notebook:
+`Clasificacion_textos.ipynb` sigue el patrón opuesto: **una ejecución = una arquitectura con una configuración concreta**. Los parámetros se declaran como *widgets* de Databricks al principio del notebook:
 
 ```python
 dbutils.widgets.text("model_type", "ffn")
@@ -86,12 +86,7 @@ La celda final recoge los widgets en un diccionario `cfg` y lo pasa a `TorchDist
 
 ## Registro de resultados
 
-Todos los entrenamientos escriben en MLflow (métricas de pérdida, perplejidad o *accuracy*, `ms_per_step`, `tokens_per_sec` y pico de memoria GPU, más los pesos finales como artefacto). Los CSV del repositorio son exportaciones directas de esos experimentos y son los que alimentan las tablas y figuras del TFM:
-
-- `runs_wkitext_2.csv` — WikiText-103 (versión definitiva)
-- `runs_lra_listops.csv` — LRA ListOps
-- `clasificacions.csv` — clasificación de texto
-- `df_ml_topic_31_03_24.csv`, `df_ml_genre_31_03_24.csv` — corpus PROGRESO
+Todos los entrenamientos escriben en MLflow (métricas de pérdida, perplejidad o *accuracy*, `ms_per_step`, `tokens_per_sec` y pico de memoria GPU, más los pesos finales como artefacto).
 
 ---
 
